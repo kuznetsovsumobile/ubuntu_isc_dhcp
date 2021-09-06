@@ -17,7 +17,7 @@ sudo sysctl -w net.ipv6.conf.lo.disable_ipv6=1
 
 
 
-
+echo -e "${G}Editing dhcpd.conf${N}"
 sudo bash -c "cat > /etc/dhcp/dhcpd.conf << EOF
 default-lease-time 60000;
 max-lease-time 720000;
@@ -41,11 +41,13 @@ host k8s-slave-2 {
 }
 EOF"
 
+echo -e "${G}Binding DHCP to eth1${N}"
 sudo bash -c "cat > /etc/default/isc-dhcp-server << EOF
 INTERFACESv4=\"eth1\"
 EOF"
-
+echo -e "${G}Enabling ISC-DHCP${N}"
 sudo systemctl enable isc-dhcp-server
+echo -e "${G}Restarting ISC-DHCP${N}"
 sudo systemctl restart isc-dhcp-server.service
 
 # to check logs use
