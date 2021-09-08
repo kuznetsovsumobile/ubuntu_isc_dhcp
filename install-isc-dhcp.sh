@@ -41,7 +41,7 @@ host k8s-slave-2 {
 }
 host k8s-proxy {
     hardware ethernet 00:15:5D:00:C2:76;
-    fixed-address 192.168.11.112;
+    fixed-address 192.168.11.99;
 }
 EOF"
 
@@ -56,3 +56,5 @@ sudo systemctl restart isc-dhcp-server.service
 
 # to check logs use
 # journalctl -u isc-dhcp-server | grep DHCPACK
+# systemctl stop isc-dhcp-server
+# sudo nano /var/lib/dhcp/dhcpd.leases
