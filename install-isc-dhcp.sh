@@ -39,6 +39,10 @@ host k8s-slave-2 {
     hardware ethernet 00:15:5D:00:C2:4C;
     fixed-address 192.168.11.112;
 }
+host k8s-proxy {
+    hardware ethernet 00:15:5D:00:C2:76;
+    fixed-address 192.168.11.112;
+}
 EOF"
 
 echo -e "${G}Binding DHCP to eth1${N}"
